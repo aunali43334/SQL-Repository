@@ -451,3 +451,38 @@ SELECT * FROM emp1
 RIGHT JOIN emp_salary
 ON emp1.emp_id=emp_salary.emp_id
 WHERE emp1.emp_id IS NULL;
+
+
+--SELF JOIN
+CREATE TABLE self_table(
+emp_id INT,
+emp_name VARCHAR(50),
+manager_id INT)
+;
+
+SELECT * FROM self_table;
+
+INSERT INTO self_table (emp_id, emp_name, manager_id) VALUES 
+(101, 'Adam',103),
+(102,'Bob',104),
+(103,'Casey',NULL),
+(104,'Donald',103);
+
+UPDATE self_table
+SET emp_id = 101 
+WHERE emp_name='Adam';
+
+SELECT * 
+FROM self_table as a
+JOIN self_table as b
+ON a.emp_id=b.manager_id;
+
+SELECT a.emp_name , b.emp_name
+FROM self_table as a
+JOIN self_table as b
+ON a.emp_id=b.manager_id;
+
+SELECT a.emp_name as manager_name, b.emp_name
+FROM self_table as a
+JOIN self_table as b
+ON a.emp_id=b.manager_id;
