@@ -468,10 +468,6 @@ INSERT INTO self_table (emp_id, emp_name, manager_id) VALUES
 (103,'Casey',NULL),
 (104,'Donald',103);
 
-UPDATE self_table
-SET emp_id = 101 
-WHERE emp_name='Adam';
-
 SELECT * 
 FROM self_table as a
 JOIN self_table as b
