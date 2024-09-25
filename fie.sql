@@ -350,3 +350,104 @@ DROP COLUMN test;
 
 UPDATE mytable
 set test='dummy_value';
+
+
+
+--JOINS IN SQL
+--INNER JOIN
+--LEFT JOIN
+--RIGHT JOIN
+--FULL JOIN
+--LEFT EXCLUSIVE JOIN
+--RIGHT EXCLUSIVE JOIN
+--FULL EXCLUSIVE JOIN
+
+CREATE TABLE emp1 (
+emp_id INT NOT NULL,
+emp_name VARCHAR(50)
+);
+
+INSERT INTO emp1 (emp_id, emp_name) VALUES 
+(1,'John'),
+(2,'Robert'),
+(3,'Ethan'),
+(4,'Tony'),
+(6,'Peter'),
+(8,'Harry'),
+(9,'Steeve'),
+(7,'Burce'),
+(11,'Baner'),
+(15,'Wong');
+
+SELECT * FROM emp1;
+
+CREATE TABLE emp_salary (
+emp_id INT NOT NULL,
+emp_salary INT NOT NULL
+);
+
+INSERT INTO emp_salary (emp_id, emp_salary) VALUES
+(15,10000),
+(2,65000),
+(3,75000),
+(4,35000),
+(5,85000),
+(6,41000),
+(7,76000)
+;
+
+SELECT * FROM emp1;
+SELECT * FROM emp_salary;
+
+--INNER JOIN
+SELECT * FROM emp1
+INNER JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id;
+
+--LEFT JOIN
+SELECT * FROM emp1
+LEFT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id;
+
+--RIGHT JOIN
+SELECT * FROM emp1
+RIGHT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id;
+
+--FULL JOIN
+SELECT * FROM emp1
+LEFT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id
+UNION
+SELECT * FROM emp1
+RIGHT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id;
+
+--LEFT EXCLUSIVE JOIN
+SELECT * FROM emp1
+LEFT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id
+WHERE emp_salary.emp_id IS NULL;
+
+--RIGHT EXCLUSIVE JOIN
+SELECT * FROM emp1
+RIGHT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id
+WHERE emp1.emp_id IS NULL;
+
+--FULL EXCLUSIVE JOIN
+SELECT *
+FROM emp1
+FULL OUTER JOIN emp_salary ON emp1.emp_id = emp_salary.emp_id
+WHERE emp1.emp_id IS NULL OR emp_salary.emp_id IS NULL;
+
+--FULL EXCLUSIVE JOIN
+SELECT * FROM emp1
+LEFT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id
+WHERE emp_salary.emp_id IS NULL
+UNION ALL
+SELECT * FROM emp1
+RIGHT JOIN emp_salary
+ON emp1.emp_id=emp_salary.emp_id
+WHERE emp1.emp_id IS NULL;
