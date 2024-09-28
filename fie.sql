@@ -577,3 +577,98 @@ VALUES
   SELECT *
 FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);
+
+
+/*Question
+Write the query with join to fund out the names 
+and rollNumber of a student who have a male advisor 
+with a salary of more than 15000 or a female advisor 
+with a salary of more than 20000.*/
+
+
+CREATE TABLE students_info (
+rollno INT PRIMARY KEY,
+name VARCHAR(50),
+advisor VARCHAR(50)
+);
+
+ALTER TABLE students_info
+ALTER COLUMN advisor INT;
+
+CREATE TABLE faculty_info (
+employee_id INT PRIMARY KEY,
+Gender VARCHAR(1),
+Salary INT
+);
+
+INSERT INTO students_info (rollno,name,advisor) VALUES 
+(1,'Robert',2),
+(2,'Claire',1),
+(3,'Kimmy',2);
+
+INSERT INTO faculty_info (employee_id,Gender,Salary) VALUES 
+(1,'M',21000),
+(2,'F',18000);
+
+
+SELECT * FROM students_info;
+SELECT * FROM faculty_info;
+
+SELECT rollno, name
+FROM students_info
+WHERE advisor IN
+(
+SELECT employee_id
+FROM faculty_info 
+WHERE (Gender = 'M' AND Salary>15000) 
+OR
+ (Gender = 'F' AND Salary>20000) 
+);
+
+--or
+SELECT s.rollno, s.name
+FROM students_info AS s
+INNER JOIN faculty_info AS f
+ON s.advisor=f.employee_id
+WHERE (f.Gender='M' AND f.Salary>15000) 
+OR (f.Gender='F' AND f.Salary>20000);
+
+CREATE TABLE price_today
+(
+stock_code VARCHAR(50),
+price INT);
+
+SELECT * FROM price_today;
+
+INSERT INTO price_today (stock_code, price) VALUES
+('TITAN',560),
+('MRF',950),
+('GOOGL',200)
+;
+
+CREATE TABLE price_tomorrow
+(
+stock_code VARCHAR(50),
+price INT);
+
+INSERT INTO price_tomorrow (stock_code, price) VALUES
+('TITAN',750),
+('MRF',800),
+('GOOGL',210)
+
+SELECT * FROM price_tomorrow;
+
+/*question:
+Stock is considered profitable if the predicted price is 
+strictly greater than the current price right query to find a stock_codes
+of all the stocks which are profitable based on the definition.
+Sort the out output in assending order.*/
+
+SELECT Price_today.Stock_code   --or  SELECT Price_tomorrow.Stock_code
+FROM Price_today
+JOIN Price_tomorrow 
+ON Price_today.Stock_code = Price_tomorrow.Stock_code
+WHERE Price_tomorrow.Price > Price_today.Price
+ORDER BY   
+ Price_today.Stock_code ASC;
+
