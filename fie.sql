@@ -482,3 +482,98 @@ SELECT a.emp_name as manager_name, b.emp_name
 FROM self_table as a
 JOIN self_table as b
 ON a.emp_id=b.manager_id;
+
+--SQL Sub queries
+CREATE TABLE SQL_SUB_Query (
+rollno INT PRIMARY KEY,
+name VARCHAR(50),
+marks INT, 
+city VARCHAR(50));
+
+INSERT INTO SQL_SUB_Query (rollno, name, marks, city) VALUES
+(101,'anil',78,'Pune'),
+(102,'bhumika',93,'Mumbai'),
+(103,'chetan',85,'Mumbai'),
+(104,'dhruv',96,'Delhi'),
+(105,'emanual',92,'Delhi'),
+(106,'farah',82,'Delhi');
+
+SELECT * FROM SQL_SUB_Query;
+--SQL SUB QUERY EXAMPLE
+--Find the max marks from the students of Delhi
+
+
+SELECT city, MAX(marks) AS max_marks
+FROM SQL_SUB_Query
+GROUP BY city
+HAVING city = 'Delhi';
+--or
+SELECT MAX(marks) AS max_marks
+FROM SQL_SUB_Query
+WHERE city = 'Delhi';
+
+
+
+--Find all orders placed by customers from the USA.
+--Subquery in WHERE clause
+CREATE TABLE orders (
+  id INT PRIMARY KEY,
+  customer_id INT,
+  product_name VARCHAR(255),
+  sales DECIMAL(10, 2)
+  );
+
+  INSERT INTO orders (id, customer_id, product_name, sales)
+VALUES
+  (1, 1, 'Product A', 1000.00),
+  (2, 2, 'Product B', 2000.00),
+  (3, 3, 'Product C', 3000.00),
+  (4, 1, 'Product D', 1500.00),
+  (5, 2, 'Product E', 2500.00);
+
+  SELECT * FROM orders;
+
+  CREATE TABLE customers (
+  id INT PRIMARY KEY,
+  name VARCHAR(255),
+  country VARCHAR(255)
+);
+
+INSERT INTO customers (id, name, country)
+VALUES
+  (1, 'Customer 1', 'USA'),
+  (2, 'Customer 2', 'Canada'),
+  (3, 'Customer 3', 'UK');
+
+   SELECT * FROM customers;
+
+
+SELECT *
+FROM orders
+WHERE customer_id IN (SELECT id FROM customers WHERE country='USA');
+
+----------------------------------------------------------------------------
+
+CREATE TABLE employees (
+  id INT PRIMARY KEY,
+  name VARCHAR(255),
+  department VARCHAR(255),
+  salary DECIMAL(10, 2)
+);
+
+
+INSERT INTO employees (id, name, department, salary)
+VALUES
+  (1, 'John Doe', 'Sales', 50000.00),
+  (2, 'Jane Smith', 'Marketing', 60000.00),
+  (3, 'Bob Johnson', 'IT', 70000.00),
+  (4, 'Alice Brown', 'Sales', 55000.00),
+  (5, 'Mike Davis', 'Marketing', 65000.00);
+
+  SELECT * FROM employees;
+  --Simple Subquery
+  --Find all employees who earn more than the average salary.
+
+  SELECT *
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
