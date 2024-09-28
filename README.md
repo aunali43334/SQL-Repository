@@ -1,6 +1,9 @@
 # SQL Queries Repository
 Author Aun Ali
 
+<h2>Link of Certificate</h2>
+https://www.mygreatlearning.com/certificate/WEKXDPGH
+
 # Table of Contents
 
 1. #database-creation
