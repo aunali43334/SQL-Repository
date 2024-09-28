@@ -15,60 +15,60 @@ Author Aun Ali
 
 # Database Creation
 
-- CREATE DATABASE: link
-- CREATE TABLE: link
+- CREATE DATABASE
+- CREATE TABLE
 
 # Database Modification
 
-- DROP DATABASE: link
-- TRUNCATE TABLE: link
-- ALTER TABLE: link
+- DROP DATABASE
+- TRUNCATE TABLE
+- ALTER TABLE
 
 # Data Manipulation
 
-- INSERT INTO TABLE: link
-- UPDATE TABLE: link
-- DELETE FROM TABLE: link
+- INSERT INTO TABLE
+- UPDATE TABLE
+- DELETE FROM TABLE
 
 # Data Retrieval
 
-- SELECT STATEMENT: link
-- DISTINCT KEYWORD: link
-- LIMIT CLAUSE: link
-- ORDER BY CLAUSE: link
+- SELECT STATEMENT
+- DISTINCT KEYWORD
+- LIMIT CLAUSE
+- ORDER BY CLAUSE
 
 # Data Filtering
 
-- WHERE CLAUSE: link
+- WHERE CLAUSE
 - CONSTRAINTS:
-    - NOT NULL: link
-    - UNIQUE: link
-    - PRIMARY KEY: link
-    - FOREIGN KEY: link
-    - DEFAULT: link
+    - NOT NULL
+    - UNIQUE
+    - PRIMARY KEY
+    - FOREIGN KEY
+    - DEFAULT
 
 Data Aggregation
 
 # - AGGREGATE FUNCTIONS:
-    - MIN: link
-    - MAX: link
-    - AVG: link
-    - COUNT: link
-    - SUM: link
-- GROUP BY CLAUSE: link
-- HAVING CLAUSE: link
+    - MIN
+    - MAX
+    - AVG
+    - COUNT
+    - SUM
+- GROUP BY CLAUSE
+- HAVING CLAUSE
 
 # Joins and Subqueries
 
-- INNER JOIN: link
-- LEFT JOIN: link
-- RIGHT JOIN: link
-- FULL JOIN: link
-- LEFT EXCLUSIVE JOIN: link
-- RIGHT EXCLUSIVE JOIN: link
-- FULL EXCLUSIVE JOIN: link
-- SELF JOIN: link
-- SUBQUERIES: link
+- INNER JOIN
+- LEFT JOIN
+- RIGHT JOIN
+- FULL JOIN
+- LEFT EXCLUSIVE JOIN
+- RIGHT EXCLUSIVE JOIN
+- FULL EXCLUSIVE JOIN
+- SELF JOIN
+- SUBQUERIES
 
 # About
 This repository contains a collection of SQL queries for various database operations.
